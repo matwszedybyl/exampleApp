@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+#import "Photo.h"
 
 @interface ImageViewController : UIViewController
+
+@property (nonatomic, strong) NSString *timestamp;
+@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) Photo *photo;
+
+@property (weak, nonatomic) IBOutlet UIImageView *photoView;
 
 @end

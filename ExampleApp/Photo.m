@@ -10,4 +10,8 @@
 
 @implementation Photo
 
+@dynamic timestamp;
+@dynamic date;
+@dynamic url;
+
 @end

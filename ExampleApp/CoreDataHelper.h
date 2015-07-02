@@ -10,4 +10,7 @@
 
 @interface CoreDataHelper : NSObject
 
++ (void) savePhoto:(NSDictionary *)photoValues;
+
+
 @end

@@ -7,7 +7,17 @@
 //
 
 #import "ViewController.h"
+#import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+@interface CameraViewController : UIViewController {
+    IBOutlet UIView *frameforCapture;
+    IBOutlet UIImageView *imageView;
+    IBOutlet UIButton *cancelPicButton;
+    IBOutlet UIButton *takePictureButton;
+}
 
-@interface CameraViewController : ViewController
-
+@property (nonatomic, strong) NSString *usernameString;
+@property (nonatomic, strong) NSString *passwordString;
+- (IBAction) takePhoto:(id)sender;
+- (IBAction) cancelPhoto:(id)sender;
 @end

@@ -9,6 +9,7 @@
 #import "PhotoViewCell.h"
 
 @implementation PhotoViewCell
+@synthesize thumbnailImage, usernameLabel, timestampLabel;
 
 - (void)awakeFromNib {
     // Initialization code

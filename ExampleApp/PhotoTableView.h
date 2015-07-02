@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PhotoViewCell.h"
 
-@interface PhotoTableView : UITableView
+@interface PhotoTableView : UITableView<UITableViewDataSource,UITableViewDelegate>
+{
+    
+}
+
+
 
 @end

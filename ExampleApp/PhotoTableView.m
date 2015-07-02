@@ -8,6 +8,10 @@
 
 #import "PhotoTableView.h"
 
+@interface PhotoTableView()
+@property (strong, nonatomic) PhotoViewCell *cell;
+@end
+
 @implementation PhotoTableView
 
 /*

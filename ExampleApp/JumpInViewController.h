@@ -9,5 +9,8 @@
 #import "ViewController.h"
 
 @interface JumpInViewController : ViewController
+@property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (nonatomic) UITapGestureRecognizer *tapRecognizer;
 
 @end

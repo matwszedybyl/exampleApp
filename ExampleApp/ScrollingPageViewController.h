@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ScrollingPageViewController : UIPageViewController
+<UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
+@property (nonatomic, strong) NSString *usernameString;
+@property (nonatomic, strong) NSString *passwordString;
 @end

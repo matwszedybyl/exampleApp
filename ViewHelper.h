@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface ViewHelper : NSObject
-
++(void) showAlertForTitle:(NSString *)title andTheMessage:(NSString *)message andAccessibilityLabel:(NSString *)label;
 @end

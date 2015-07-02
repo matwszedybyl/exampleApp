@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+ 
+@interface SimpleViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-@interface SimpleViewController : UIViewController
+@property (nonatomic, strong)   NSArray *tableData;
+
+
 
 @end
