@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSString *timestamp;
 @property (nonatomic, strong) NSString *url;
 @property (nonatomic, strong) Photo *photo;
-
-@property (weak, nonatomic) IBOutlet UIImageView *photoView;
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, weak) IBOutlet UIImageView *photoView;
 
 @end

@@ -10,6 +10,8 @@
 #import "PhotoViewCell.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "ImageViewController.h"
+#import "CameraViewController.h"
+#import "Photographer.h"
 
 
 @interface SimpleViewController ()
@@ -20,14 +22,24 @@
 @implementation SimpleViewController
 NSCache *cache;
 AppDelegate *delegate;
+NSUserDefaults *userDefaults;
 
+- (IBAction)swipeRight:(UISwipeGestureRecognizer *)sender {
+    [self performSegueWithIdentifier:@"SwipeToCamera" sender:self];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     delegate = [[UIApplication sharedApplication] delegate];
     cache = [delegate appCache];
-    NSManagedObjectContext *context = [delegate managedObjectContext];
+    NSString *p = [cache objectForKey:@"currentPhotographer"];
+    NSLog(@"name is %@", p);
+    userDefaults = [delegate userDefaults];
+    p = [userDefaults objectForKey:@"currentPhotographer"];
+    NSLog(@"name is %@", p);
+ NSManagedObjectContext *context = [delegate managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
     
     
     NSEntityDescription *description = [NSEntityDescription entityForName:@"Photo" inManagedObjectContext:context];
@@ -44,7 +56,7 @@ AppDelegate *delegate;
     } else {
         NSLog(@"NO ERROR and Data is there");
     }
-    [self setPhotosIntoCache];
+//    [self setPhotosIntoCache];
     
 }
      
@@ -88,9 +100,7 @@ AppDelegate *delegate;
         [assetslibrary assetForURL:url
                        resultBlock:resultblock
                       failureBlock:failureblock];
-
     }
-    
 }
 
 
@@ -109,7 +119,6 @@ AppDelegate *delegate;
     static NSString *simpleTableIdentifier = @"PhotoViewCell";
     
     PhotoViewCell *cell = (PhotoViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
-    
     if (cell == nil) {
         cell = [[PhotoViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
@@ -119,7 +128,6 @@ AppDelegate *delegate;
     
     NSString *urlString = [NSString stringWithFormat:@"%@", photo.url];
     cell.usernameLabel.text = urlString;
-    
     return cell;
 }
 
@@ -138,10 +146,8 @@ AppDelegate *delegate;
             NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
             PhotoViewCell *cell =  (PhotoViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
             Photo *photo = [self.tableData objectAtIndex:indexPath.row];
-
-            ImageViewController *cvc = (ImageViewController *)segue.destinationViewController;
+            ImageViewController *cvc = (ImageViewController *)[segue destinationViewController];
             cvc.timestamp = cell.timestampLabel.text;
-//            NSData *imageData = [cache objectForKey:photo.url];
             UIImage *image = [cache objectForKey:photo.url];
             NSString *fakestring = [[NSString alloc] initWithFormat:@" %@ meep", photo.url];
 
@@ -160,7 +166,14 @@ AppDelegate *delegate;
             cvc.url = cell.usernameLabel.text;
             cvc.photo = photo;
         }
+    }else if ([[segue identifier] isEqualToString:@"SwipeToCamera"])
+    {
+        if([segue.destinationViewController isKindOfClass:[CameraViewController class]]){
+            CameraViewController *cvc = (CameraViewController *)[segue destinationViewController];
+
+        }
     }
+
 }
 
 

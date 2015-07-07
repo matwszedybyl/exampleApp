@@ -9,14 +9,13 @@
 #import "CameraViewController.h"
 #import "SimpleViewController.h"
 #import "Photo.h"
+#import "Photographer.h"
 #import "AppDelegate.h"
 #import "CoreDataHelper.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "SettingsViewController.h"
 
 @interface CameraViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *passwordLabel;
-
 @end
 
 @implementation CameraViewController
@@ -25,6 +24,7 @@ AVCaptureSession *session;
 AVCaptureStillImageOutput *StillImageOutput;
 AVCaptureVideoPreviewLayer *previewLayer;
 CALayer *rootLayer;
+NSCache *cache;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,11 +45,17 @@ CALayer *rootLayer;
   
         
 }
+- (IBAction)swipeLeft:(UISwipeGestureRecognizer *)sender {
+    [self performSegueWithIdentifier:@"SwipeToSettings" sender:self];
+
+}
+- (IBAction)swipeRight:(UISwipeGestureRecognizer *)sender {
+    [self performSegueWithIdentifier:@"SwipeToList" sender:self];
+
+}
 
 - (void)updateUI
 {
-    self.usernameLabel.text = [NSString stringWithFormat:@"Username is: %@", [self usernameString]];
-    self.passwordLabel.text = [NSString stringWithFormat:@"Password is: %@", [self passwordString]];
     
     session = [[AVCaptureSession alloc]init];
     [session setSessionPreset:AVCaptureSessionPresetPhoto];
@@ -73,7 +79,9 @@ CALayer *rootLayer;
     [StillImageOutput setOutputSettings:outputSettings];
     [session addOutput:StillImageOutput];
     [session startRunning];
-    
+//    [rootLayer insertSublayer:self->cancelPicButton.layer above:0];
+//    [rootLayer insertSublayer:self->takePictureButton.layer above:0];
+
     [self refreshCamera];
     
 }
@@ -108,7 +116,7 @@ CALayer *rootLayer;
              {
                  url = [assetURL absoluteString];
                  NSLog(@"IMAGE SAVED TO PHOTO ALBUM %@", url);
-                 [self saveTimestamp:url];
+                 [self savePhotoModel:url];
 
                  [library assetForURL:assetURL resultBlock:^(ALAsset *asset )
                   {
@@ -120,23 +128,16 @@ CALayer *rootLayer;
                   }];
              }];
             
-            
-            
-//            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-          
             imageView.image = image;
             [previewLayer removeFromSuperlayer];
             NSLog(@"Outside block =  %@", url);
-
-            
-            
 
         }
     }];
     
 }
 
--(void) saveTimestamp:(NSString *)url
+-(void) savePhotoModel:(NSString *)url
 {
     //get instance of app delegate
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
@@ -153,15 +154,15 @@ CALayer *rootLayer;
     NSString *timestampString = [NSString stringWithFormat:@"%ld", timestamp];
     NSDate *date = [[NSDate alloc] init];
     date = [NSDate date];
-//    NSDictionary *photoValues = [[NSDictionary alloc] init];
-//    [photoValues setValue:timestampString forKey:@"timestamp"];
-//    [photoValues setValue:date forKey:@"date"];
-
     
     NSManagedObject *newPhoto = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
-    
+//    Photographer *photographer = [[Photographer alloc]init];
+    NSManagedObject *photographer = [NSEntityDescription insertNewObjectForEntityForName:@"Photographer" inManagedObjectContext:context];
+    NSString *username =[cache objectForKey:@"currentPhotographer"];
+    [photographer setValue:username forKey:@"name"];
     [newPhoto setValue:timestampString forKey:@"timestamp"];
     [newPhoto setValue:date forKey:@"date"];
+    [newPhoto setValue:photographer forKey:@"whoTook"];
     NSLog(@"url is : %@", url);
 
     [newPhoto setValue:url forKey:@"url"];
@@ -171,9 +172,7 @@ CALayer *rootLayer;
     {
         NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
     }
-    
 //    [CoreDataHelper savePhoto:photoValues];
-
     
 }
 
@@ -182,14 +181,24 @@ CALayer *rootLayer;
 }
 
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+    {
+        if ([[segue identifier] isEqualToString:@"SwipeToList"])
+        {
+            if([segue.destinationViewController isKindOfClass:[SimpleViewController class]]){
+                SimpleViewController *cvc = (SimpleViewController *)[segue destinationViewController];
+                
+            }
+        }else if ([[segue identifier] isEqualToString:@"SwipeToSettings"])
+        {
+            if([segue.destinationViewController isKindOfClass:[SettingsViewController class]]){
+                SettingsViewController *cvc = (SettingsViewController *)[segue destinationViewController];
+                
+            }
+        }
 }
-*/
 
 @end

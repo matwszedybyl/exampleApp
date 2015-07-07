@@ -16,8 +16,6 @@
     IBOutlet UIButton *takePictureButton;
 }
 
-@property (nonatomic, strong) NSString *usernameString;
-@property (nonatomic, strong) NSString *passwordString;
 - (IBAction) takePhoto:(id)sender;
 - (IBAction) cancelPhoto:(id)sender;
 @end

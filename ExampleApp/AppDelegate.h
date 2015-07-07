@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong) NSCache *appCache;
+@property (nonatomic, strong) NSUserDefaults *userDefaults;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

@@ -11,6 +11,7 @@
 
 @interface ImageViewController ()
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (weak, nonatomic) IBOutlet UILabel *timeAgoLabel;
 
 @end
 
@@ -19,15 +20,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.spinner startAnimating];
-
+    long timeStampNum = [self.timestamp longLongValue];
+    long currentTime = CFAbsoluteTimeGetCurrent();
+    long timeAgo = currentTime - timeStampNum;
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeAgo];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm:ss"];
+    NSLog(@"%@", [formatter stringFromDate:date]);
+    self.timeAgoLabel.text = [NSString stringWithFormat:@"Time ago: %ld seconds", timeAgo];
+    
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     NSCache *cache = [delegate appCache];
-//    NSData *imageData = [cache objectForKey:self.url];
     UIImage *image = [cache objectForKey:self.url];
-//    NSData *imageData = [cache objectForKey:@"YES"];
     if(image != nil){
         NSLog(@"imaging cache");
-//        self.photoView.image = [UIImage imageWithData:imageData];
         self.photoView.image = image;
         [self.spinner stopAnimating];
     } else {
@@ -40,9 +46,10 @@
         {
             UIImage *largeimage = [UIImage imageWithCGImage:iref scale:[rep scale] orientation:UIImageOrientationRight];
             self.photoView.image = largeimage;
-            [self.spinner stopAnimating];
 
         }
+        [self.spinner stopAnimating];
+
     };
     
     ALAssetsLibraryAccessFailureBlock failureblock  = ^(NSError *myerror)

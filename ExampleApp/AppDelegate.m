@@ -85,6 +85,18 @@
     return _appCache;
 }
 
+- (NSUserDefaults *)userDefaults
+{
+    // The managed object model for the application. It is a fatal error for the application not to be able to find and load its model.
+    if (_userDefaults != nil)
+    {
+        return _userDefaults;
+    }
+    _userDefaults = [[NSUserDefaults alloc] init];
+    NSLog(@"creating new userDefaults");
+    return _userDefaults;
+}
+
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
     // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it.

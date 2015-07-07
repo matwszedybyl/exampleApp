@@ -9,16 +9,21 @@
 /* Begin PBXBuildFile section */
 		3B0588721B41C9980018D854 /* Photographer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0588711B41C9980018D854 /* Photographer.m */; };
 		3B0588761B41CA180018D854 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0588751B41CA180018D854 /* CoreDataHelper.m */; };
+		3B0E661D1B4C1B2900B88EA3 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B0E661B1B4C1B2900B88EA3 /* libOCMock.a */; };
+		3B0E661E1B4C1B2900B88EA3 /* OCMock in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B0E661C1B4C1B2900B88EA3 /* OCMock */; };
+		3B0E66211B4C2F6600B88EA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B0E661F1B4C2F6600B88EA3 /* Main.storyboard */; };
 		3B10AF381B3997C3004B1AF8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B10AF371B3997C3004B1AF8 /* main.m */; };
 		3B10AF3B1B3997C3004B1AF8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B10AF3A1B3997C3004B1AF8 /* AppDelegate.m */; };
 		3B10AF3E1B3997C3004B1AF8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B10AF3D1B3997C3004B1AF8 /* ViewController.m */; };
-		3B10AF411B3997C3004B1AF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B10AF3F1B3997C3004B1AF8 /* Main.storyboard */; };
 		3B10AF431B3997C3004B1AF8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B10AF421B3997C3004B1AF8 /* Images.xcassets */; };
 		3B10AF461B3997C3004B1AF8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B10AF441B3997C3004B1AF8 /* LaunchScreen.xib */; };
 		3B10AF521B3997C3004B1AF8 /* ExampleAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B10AF511B3997C3004B1AF8 /* ExampleAppTests.m */; };
 		3B10AF5D1B399943004B1AF8 /* JumpInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B10AF5C1B399943004B1AF8 /* JumpInViewController.m */; };
 		3B10AF601B39AFBF004B1AF8 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B10AF5F1B39AFBF004B1AF8 /* CameraViewController.m */; };
 		3B7A25F41B3B366400C3E6A5 /* ScrollingPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7A25F31B3B366400C3E6A5 /* ScrollingPageViewController.m */; };
+		3BC3AF7B1B4AD23A004F97D1 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC3AF7A1B4AD23A004F97D1 /* SettingsViewController.m */; };
+		3BC3AF7F1B4B05BC004F97D1 /* LeftSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC3AF7E1B4B05BC004F97D1 /* LeftSegue.m */; };
+		3BCB09101B45CB28007E6C7E /* LoginViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCB090F1B45CB28007E6C7E /* LoginViewControllerTest.m */; };
 		3BCF1A8D1B42F7000058AB9E /* ViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF1A8C1B42F7000058AB9E /* ViewHelper.m */; };
 		3BCF1A911B4318DE0058AB9E /* PhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF1A901B4318DE0058AB9E /* PhotoViewCell.m */; };
 		3BCF1A961B4326830058AB9E /* PhotoTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF1A951B4326830058AB9E /* PhotoTableView.m */; };
@@ -43,6 +48,9 @@
 		3B0588711B41C9980018D854 /* Photographer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photographer.m; sourceTree = "<group>"; };
 		3B0588741B41CA180018D854 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		3B0588751B41CA180018D854 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
+		3B0E661B1B4C1B2900B88EA3 /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = usr/include/libOCMock.a; sourceTree = "<group>"; };
+		3B0E661C1B4C1B2900B88EA3 /* OCMock */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OCMock; path = usr/include/OCMock; sourceTree = "<group>"; };
+		3B0E66201B4C2F6600B88EA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ExampleApp/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3B10AF321B3997C3004B1AF8 /* ExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B10AF361B3997C3004B1AF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B10AF371B3997C3004B1AF8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -50,7 +58,6 @@
 		3B10AF3A1B3997C3004B1AF8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3B10AF3C1B3997C3004B1AF8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		3B10AF3D1B3997C3004B1AF8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		3B10AF401B3997C3004B1AF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3B10AF421B3997C3004B1AF8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3B10AF451B3997C3004B1AF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3B10AF4B1B3997C3004B1AF8 /* ExampleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +69,11 @@
 		3B10AF5F1B39AFBF004B1AF8 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		3B7A25F21B3B366400C3E6A5 /* ScrollingPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingPageViewController.h; sourceTree = "<group>"; };
 		3B7A25F31B3B366400C3E6A5 /* ScrollingPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollingPageViewController.m; sourceTree = "<group>"; };
+		3BC3AF791B4AD23A004F97D1 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		3BC3AF7A1B4AD23A004F97D1 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		3BC3AF7D1B4B05BC004F97D1 /* LeftSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSegue.h; sourceTree = "<group>"; };
+		3BC3AF7E1B4B05BC004F97D1 /* LeftSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSegue.m; sourceTree = "<group>"; };
+		3BCB090F1B45CB28007E6C7E /* LoginViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewControllerTest.m; sourceTree = "<group>"; };
 		3BCF1A8B1B42F7000058AB9E /* ViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewHelper.h; path = ../ViewHelper.h; sourceTree = "<group>"; };
 		3BCF1A8C1B42F7000058AB9E /* ViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewHelper.m; path = ../ViewHelper.m; sourceTree = "<group>"; };
 		3BCF1A8F1B4318DE0058AB9E /* PhotoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewCell.h; sourceTree = "<group>"; };
@@ -89,6 +101,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B0E661D1B4C1B2900B88EA3 /* libOCMock.a in Frameworks */,
+				3B0E661E1B4C1B2900B88EA3 /* OCMock in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +121,10 @@
 		3B10AF291B3997C3004B1AF8 = {
 			isa = PBXGroup;
 			children = (
+				3B0E661F1B4C2F6600B88EA3 /* Main.storyboard */,
+				3B0E661B1B4C1B2900B88EA3 /* libOCMock.a */,
+				3B0E661C1B4C1B2900B88EA3 /* OCMock */,
+				3BC3AF7C1B4B059C004F97D1 /* Custom Segues */,
 				3B10AF341B3997C3004B1AF8 /* ExampleApp */,
 				3B10AF4E1B3997C3004B1AF8 /* ExampleAppTests */,
 				3B10AF331B3997C3004B1AF8 /* Products */,
@@ -134,7 +152,6 @@
 				3BE5D7491B3C7F8400E5E9F2 /* Core Data Models */,
 				3B10AF391B3997C3004B1AF8 /* AppDelegate.h */,
 				3B10AF3A1B3997C3004B1AF8 /* AppDelegate.m */,
-				3B10AF3F1B3997C3004B1AF8 /* Main.storyboard */,
 				3B10AF421B3997C3004B1AF8 /* Images.xcassets */,
 				3B10AF441B3997C3004B1AF8 /* LaunchScreen.xib */,
 				3B10AF351B3997C3004B1AF8 /* Supporting Files */,
@@ -154,6 +171,7 @@
 		3B10AF4E1B3997C3004B1AF8 /* ExampleAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				3BCB090E1B45CAD0007E6C7E /* Controllers */,
 				3B10AF511B3997C3004B1AF8 /* ExampleAppTests.m */,
 				3B10AF4F1B3997C3004B1AF8 /* Supporting Files */,
 			);
@@ -166,6 +184,23 @@
 				3B10AF501B3997C3004B1AF8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3BC3AF7C1B4B059C004F97D1 /* Custom Segues */ = {
+			isa = PBXGroup;
+			children = (
+				3BC3AF7D1B4B05BC004F97D1 /* LeftSegue.h */,
+				3BC3AF7E1B4B05BC004F97D1 /* LeftSegue.m */,
+			);
+			name = "Custom Segues";
+			sourceTree = "<group>";
+		};
+		3BCB090E1B45CAD0007E6C7E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3BCB090F1B45CB28007E6C7E /* LoginViewControllerTest.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		3BCF1A8E1B4318B70058AB9E /* Table Cells */ = {
@@ -192,6 +227,8 @@
 				3B10AF5F1B39AFBF004B1AF8 /* CameraViewController.m */,
 				3BE5C9A11B446ADE005F63A7 /* ImageViewController.h */,
 				3BE5C9A21B446ADE005F63A7 /* ImageViewController.m */,
+				3BC3AF791B4AD23A004F97D1 /* SettingsViewController.h */,
+				3BC3AF7A1B4AD23A004F97D1 /* SettingsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -298,7 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B10AF411B3997C3004B1AF8 /* Main.storyboard in Resources */,
+				3B0E66211B4C2F6600B88EA3 /* Main.storyboard in Resources */,
 				3B10AF461B3997C3004B1AF8 /* LaunchScreen.xib in Resources */,
 				3B10AF431B3997C3004B1AF8 /* Images.xcassets in Resources */,
 			);
@@ -321,6 +358,7 @@
 				3BE5C9A31B446ADE005F63A7 /* ImageViewController.m in Sources */,
 				3BE5D7481B3C7D2100E5E9F2 /* TimeStampModel.xcdatamodeld in Sources */,
 				3B10AF601B39AFBF004B1AF8 /* CameraViewController.m in Sources */,
+				3BC3AF7B1B4AD23A004F97D1 /* SettingsViewController.m in Sources */,
 				3B10AF3E1B3997C3004B1AF8 /* ViewController.m in Sources */,
 				3BE5D74C1B3C7FA300E5E9F2 /* Photo.m in Sources */,
 				3B0588721B41C9980018D854 /* Photographer.m in Sources */,
@@ -332,6 +370,7 @@
 				3BE5D7451B3C545F00E5E9F2 /* SimpleViewController.m in Sources */,
 				3B10AF5D1B399943004B1AF8 /* JumpInViewController.m in Sources */,
 				3B7A25F41B3B366400C3E6A5 /* ScrollingPageViewController.m in Sources */,
+				3BC3AF7F1B4B05BC004F97D1 /* LeftSegue.m in Sources */,
 				3BCF1A911B4318DE0058AB9E /* PhotoViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BCB09101B45CB28007E6C7E /* LoginViewControllerTest.m in Sources */,
 				3B10AF521B3997C3004B1AF8 /* ExampleAppTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,10 +395,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3B10AF3F1B3997C3004B1AF8 /* Main.storyboard */ = {
+		3B0E661F1B4C2F6600B88EA3 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3B10AF401B3997C3004B1AF8 /* Base */,
+				3B0E66201B4C2F6600B88EA3 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -486,8 +526,24 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/**",
+				);
 				INFOPLIST_FILE = ExampleAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/mwszedybyl/Downloads/iOS,
+					"$(PROJECT_DIR)/usr/include",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExampleApp.app/ExampleApp";
 			};
@@ -501,8 +557,24 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/**",
+				);
 				INFOPLIST_FILE = ExampleAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/mwszedybyl/Downloads/iOS,
+					"$(PROJECT_DIR)/usr/include",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ExampleApp.app/ExampleApp";
 			};

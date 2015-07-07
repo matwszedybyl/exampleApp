@@ -13,4 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (nonatomic) UITapGestureRecognizer *tapRecognizer;
 
+- (IBAction)jumpIn:(id)sender;
+
+
 @end

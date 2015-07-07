@@ -5,11 +5,15 @@
 //  Created by Mat Wszedybyl on 6/23/15.
 //  Copyright (c) 2015 Mat Wszedybyl. All rights reserved.
 //
+// mat is the coolest guy alive
+
 
 #import "JumpInViewController.h"
 #import "CameraViewController.h"
 #import "ScrollingPageViewController.h"
 #import "ViewHelper.h"
+#import "SimpleViewController.h"
+#import "Photographer.h"
 
 @interface JumpInViewController ()
 @property (strong,nonatomic) NSString *userName;
@@ -18,7 +22,10 @@
 @end
 
 @implementation JumpInViewController
-
+NSCache *cache;
+AppDelegate *appDelegate;
+NSString *usernameString;
+NSUserDefaults *userDefaults;
 
 - (IBAction)SignUpButton:(UIButton *)sender
 {
@@ -36,28 +43,59 @@
 
 -(void)signUp
 {
+    [self saveUser];
+}
+
+
+-(void) saveUser
+{
+    
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+
+    if ([appDelegate managedObjectContext] == nil)
+    {
+        context = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext];
+        NSLog(@"After managedObjectContext: %@",  context);
+    }
+    
+    NSString *usernameString = self.usernameTextField.text;
+    NSString *passwordString = self.passwordTextField.text;
+    NSManagedObject *newPhotographer = [NSEntityDescription insertNewObjectForEntityForName:@"Photographer" inManagedObjectContext:context];
+
+    [newPhotographer setValue:usernameString forKey:@"name"];
+    [newPhotographer setValue:passwordString forKey:@"password"];
+    
+    NSError *error = nil;
+    if (![context save:&error])
+    {
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    } else {
+        NSLog(@"Saved");
+
+    }
     
 }
 
 - (IBAction)jumpIn:(id)sender {
     if([self validUsername] && [self validPassword]){
-        [self performSegueWithIdentifier:@"JumpIntoCameraSegue" sender:self];
+        [self performSegueWithIdentifier:@"Go To Photo List" sender:self];
+        appDelegate = [[UIApplication sharedApplication] delegate];
+        cache = [appDelegate appCache];
+        userDefaults = [appDelegate userDefaults];
+        [cache setObject:self.usernameTextField.text forKey:@"currentPhotographer"];
+        [userDefaults setObject:self.usernameTextField.text forKey:@"currentPhotographer"];
     } else {
-        [self performSegueWithIdentifier:@"JumpIntoCameraSegue" sender:self];
-
-//        [ViewHelper showAlertForTitle:@"Invalid Credentials" andTheMessage:@"Please check your login information" andAccessibilityLabel:@"Network Error"];
+//        [self performSegueWithIdentifier:@"Go To Photo List" sender:self];
+        [ViewHelper showAlertForTitle:@"Invalid Credentials" andTheMessage:@"Please check your login information" andAccessibilityLabel:@""];
     }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"JumpIntoCameraSegue"]){
-        if([segue.destinationViewController isKindOfClass:[ScrollingPageViewController class]]){
-            self.userName = self.usernameTextField.text;
-                self.password = self.passwordTextField.text;
-                ScrollingPageViewController *cvc = (ScrollingPageViewController *)segue.destinationViewController;
-                cvc.usernameString = self.userName;
-                cvc.passwordString = self.password;
+     if([segue.identifier isEqualToString:@"Go To Photo List"]){
+        if([segue.destinationViewController isKindOfClass:[SimpleViewController class]]){
+        self.userName = self.usernameTextField.text;
+        self.password = self.passwordTextField.text;
             
         }
     }
@@ -95,19 +133,17 @@
     [super viewDidLoad];
     self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     self.tapRecognizer.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:self.tapRecognizer];    // Do any additional setup after loading the view.
+    [self.view addGestureRecognizer:self.tapRecognizer];
 }
 
 -(void)hideKeyboard
 {
     [self.usernameTextField resignFirstResponder];
     [self.passwordTextField resignFirstResponder];
-//    self.tapRecognizer.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*
