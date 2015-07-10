@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PhotoViewCell : UITableViewCell{}
+@interface PhotoViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnailImage;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timestampLabel;

@@ -43,7 +43,6 @@ JumpInViewController *jumpInVCTest;
     OCMStub([viewHelperMock showAlertForTitle:@"Invalid Credentials" andTheMessage:@"Please check your login information" andAccessibilityLabel:@""]);
     [jumpInVCTest jumpIn:nil];
     OCMVerify([viewHelperMock showAlertForTitle:@"Invalid Credentials" andTheMessage:@"Please check your login information" andAccessibilityLabel:@""]);
-
 }
 
 - (void)testValidCredentials {

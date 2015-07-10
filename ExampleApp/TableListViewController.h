@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
  
-@interface SimpleViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface TableListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong)   NSArray *tableData;
-
+@property (weak, nonatomic) IBOutlet UITableView *table;
 
 
 @end

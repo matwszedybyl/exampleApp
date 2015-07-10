@@ -76,17 +76,6 @@
             </objects>
             <point key="canvasLocation" x="556" y="270"/>
         </scene>
-        <!--Scrolling Page View Controller-->
-        <scene sceneID="KGH-iW-VWo">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="5Cq-hQ-DLH" customClass="ScrollingPageViewController" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" id="6Gn-ip-T1J"/>
-                </pageViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tkN-YZ-X66" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1037" y="148"/>
-        </scene>
         <!--Image View Controller-->
         <scene sceneID="Hkg-y4-1vo">
             <objects>
@@ -138,10 +127,10 @@
             </objects>
             <point key="canvasLocation" x="419" y="1824"/>
         </scene>
-        <!--Simple View Controller-->
+        <!--Table List View Controller-->
         <scene sceneID="dvc-wU-ejM">
             <objects>
-                <viewController storyboardIdentifier="ViewController1" id="Pvq-Ba-eH3" customClass="SimpleViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TableListViewController" id="Pvq-Ba-eH3" customClass="TableListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="usy-fi-Gjb"/>
                         <viewControllerLayoutGuide type="bottom" id="xId-Py-eOy"/>
@@ -204,7 +193,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="tkb-RS-Aoq"/>
                     <connections>
-                        <outlet property="tableView" destination="z70-nw-ENg" id="B8i-DH-zAl"/>
+                        <outlet property="table" destination="z70-nw-ENg" id="zGR-Gp-3qJ"/>
                         <segue destination="96c-uG-2Nm" kind="push" identifier="Show Photo" id="sr3-Ls-5ex"/>
                     </connections>
                 </viewController>
@@ -217,10 +206,10 @@
             </objects>
             <point key="canvasLocation" x="1022" y="1014"/>
         </scene>
-        <!--Camera View Controller-->
+        <!--CameraViewController-->
         <scene sceneID="9z4-8U-4b8">
             <objects>
-                <viewController storyboardIdentifier="ViewController2" id="l3V-VP-P9a" customClass="CameraViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CameraViewController" title="CameraViewController" id="l3V-VP-P9a" customClass="CameraViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ral-Xc-CBn"/>
                         <viewControllerLayoutGuide type="bottom" id="EKQ-hL-Bdq"/>
@@ -230,18 +219,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fA7-LP-MPp">
-                                <rect key="frame" x="0.0" y="53" width="320" height="515"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3UC-95-DnX">
-                                <rect key="frame" x="0.0" y="53" width="320" height="515"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="YES"/>
                                 </accessibility>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxe-jS-pUj">
-                                <rect key="frame" x="16" y="28" width="130" height="45"/>
+                                <rect key="frame" x="0.0" y="20" width="130" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Cancel picture">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -250,9 +239,11 @@
                                     <action selector="cancelPhoto:" destination="l3V-VP-P9a" eventType="touchUpInside" id="yxJ-sf-V0l"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="701-aF-LBS">
-                                <rect key="frame" x="175" y="28" width="124" height="44"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="701-aF-LBS">
+                                <rect key="frame" x="103" y="526" width="115" height="22"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
+                                </accessibility>
                                 <state key="normal" title="Take Picture">
                                     <color key="titleColor" red="0.40000000600000002" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -276,6 +267,7 @@
                         <outlet property="cancelPicButton" destination="fxe-jS-pUj" id="gBw-69-jei"/>
                         <outlet property="frameforCapture" destination="fA7-LP-MPp" id="1je-xa-0b8"/>
                         <outlet property="imageView" destination="3UC-95-DnX" id="Ekv-EH-rNn"/>
+                        <outlet property="takePictureButton" destination="701-aF-LBS" id="C2u-Ha-qof"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6B-uX-qhk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -353,7 +345,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="3rs-aY-GDX"/>
         <segue reference="Fpl-dc-sFA"/>
+        <segue reference="Anc-Vs-4bY"/>
     </inferredMetricsTieBreakers>
 </document>

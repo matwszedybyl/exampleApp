@@ -7,7 +7,7 @@
 //
 
 #import "CameraViewController.h"
-#import "SimpleViewController.h"
+#import "TableListViewController.h"
 #import "Photo.h"
 #import "Photographer.h"
 #import "AppDelegate.h"
@@ -22,9 +22,9 @@
 
 AVCaptureSession *session;
 AVCaptureStillImageOutput *StillImageOutput;
-AVCaptureVideoPreviewLayer *previewLayer;
 CALayer *rootLayer;
 NSCache *cache;
+BOOL *pictureTaken;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,23 +40,20 @@ NSCache *cache;
 {
     [super viewWillAppear:animated];
     rootLayer = [[self view] layer];
-
     [self updateUI];
-  
-        
 }
+
 - (IBAction)swipeLeft:(UISwipeGestureRecognizer *)sender {
     [self performSegueWithIdentifier:@"SwipeToSettings" sender:self];
-
 }
+
 - (IBAction)swipeRight:(UISwipeGestureRecognizer *)sender {
     [self performSegueWithIdentifier:@"SwipeToList" sender:self];
-
 }
 
 - (void)updateUI
 {
-    
+    pictureTaken = false;
     session = [[AVCaptureSession alloc]init];
     [session setSessionPreset:AVCaptureSessionPresetPhoto];
     AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -65,35 +62,29 @@ NSCache *cache;
     if([session canAddInput:deviceInput]){
         [session addInput:deviceInput];
     }
-    previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
-    [previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:session];
+    [self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     [rootLayer setMasksToBounds:YES];
     
-    
-    CGRect frame = frameforCapture.frame;
-    [previewLayer setFrame:frame];
-    [rootLayer insertSublayer:previewLayer above:0];
+    CGRect frame = self.frameforCapture.frame;
+    [self.previewLayer setFrame:frame];
+    [rootLayer insertSublayer:self.previewLayer above:0];
     
     StillImageOutput = [[AVCaptureStillImageOutput alloc] init];
     NSDictionary *outputSettings = [[NSDictionary alloc] initWithObjectsAndKeys:AVVideoCodecJPEG, AVVideoCodecKey, nil];
     [StillImageOutput setOutputSettings:outputSettings];
     [session addOutput:StillImageOutput];
     [session startRunning];
-//    [rootLayer insertSublayer:self->cancelPicButton.layer above:0];
-//    [rootLayer insertSublayer:self->takePictureButton.layer above:0];
-
-    [self refreshCamera];
-    
+    [self.cancelPicButton setHidden:TRUE];
+    [self.takePictureButton setHidden:FALSE];
+    //bring to front
+    [rootLayer insertSublayer:self.takePictureButton.layer above:0];
 }
 
-- (void) refreshCamera
-{
-
-    
-}
 
 -(IBAction)takePhoto:(id)sender
 {
+    self.previewLayer = nil;
     AVCaptureConnection *videoConnection = nil;
     for(AVCaptureConnection *connection in StillImageOutput.connections) {
         for(AVCaptureInputPort *port in [connection inputPorts]) {
@@ -127,14 +118,15 @@ NSCache *cache;
                       NSLog(@"Error loading asset");
                   }];
              }];
-            
-            imageView.image = image;
-            [previewLayer removeFromSuperlayer];
+            self.imageView.image = image;
+            [self.previewLayer removeFromSuperlayer];
             NSLog(@"Outside block =  %@", url);
-
         }
     }];
-    
+    pictureTaken = TRUE;
+    [self.cancelPicButton setHidden:FALSE];
+    [self.takePictureButton setHidden:TRUE];
+
 }
 
 -(void) savePhotoModel:(NSString *)url
@@ -156,7 +148,6 @@ NSCache *cache;
     date = [NSDate date];
     
     NSManagedObject *newPhoto = [NSEntityDescription insertNewObjectForEntityForName:@"Photo" inManagedObjectContext:context];
-//    Photographer *photographer = [[Photographer alloc]init];
     NSManagedObject *photographer = [NSEntityDescription insertNewObjectForEntityForName:@"Photographer" inManagedObjectContext:context];
     NSString *username =[cache objectForKey:@"currentPhotographer"];
     [photographer setValue:username forKey:@"name"];
@@ -188,8 +179,8 @@ NSCache *cache;
     {
         if ([[segue identifier] isEqualToString:@"SwipeToList"])
         {
-            if([segue.destinationViewController isKindOfClass:[SimpleViewController class]]){
-                SimpleViewController *cvc = (SimpleViewController *)[segue destinationViewController];
+            if([segue.destinationViewController isKindOfClass:[TableListViewController class]]){
+                TableListViewController *cvc = (TableListViewController *)[segue destinationViewController];
                 
             }
         }else if ([[segue identifier] isEqualToString:@"SwipeToSettings"])

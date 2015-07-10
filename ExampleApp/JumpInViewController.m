@@ -12,7 +12,7 @@
 #import "CameraViewController.h"
 #import "ScrollingPageViewController.h"
 #import "ViewHelper.h"
-#import "SimpleViewController.h"
+#import "TableListViewController.h"
 #import "Photographer.h"
 
 @interface JumpInViewController ()
@@ -85,7 +85,7 @@ NSUserDefaults *userDefaults;
         [cache setObject:self.usernameTextField.text forKey:@"currentPhotographer"];
         [userDefaults setObject:self.usernameTextField.text forKey:@"currentPhotographer"];
     } else {
-//        [self performSegueWithIdentifier:@"Go To Photo List" sender:self];
+        [self performSegueWithIdentifier:@"Go To Photo List" sender:self];
         [ViewHelper showAlertForTitle:@"Invalid Credentials" andTheMessage:@"Please check your login information" andAccessibilityLabel:@""];
     }
 }
@@ -93,7 +93,7 @@ NSUserDefaults *userDefaults;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
      if([segue.identifier isEqualToString:@"Go To Photo List"]){
-        if([segue.destinationViewController isKindOfClass:[SimpleViewController class]]){
+        if([segue.destinationViewController isKindOfClass:[TableListViewController class]]){
         self.userName = self.usernameTextField.text;
         self.password = self.passwordTextField.text;
             

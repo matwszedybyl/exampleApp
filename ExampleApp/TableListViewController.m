@@ -5,7 +5,7 @@
 //  Created by Mat Wszedybyl on 6/25/15.
 //  Copyright (c) 2015 Mat Wszedybyl. All rights reserved.
 
-#import "SimpleViewController.h"
+#import "TableListViewController.h"
 #import "Photo.h"
 #import "PhotoViewCell.h"
 #import <AssetsLibrary/AssetsLibrary.h>
@@ -14,12 +14,13 @@
 #import "Photographer.h"
 
 
-@interface SimpleViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@interface TableListViewController ()
 
 @end
 
-@implementation SimpleViewController
+@implementation TableListViewController
+
+@synthesize table;
 NSCache *cache;
 AppDelegate *delegate;
 NSUserDefaults *userDefaults;
@@ -37,13 +38,9 @@ NSUserDefaults *userDefaults;
     userDefaults = [delegate userDefaults];
     p = [userDefaults objectForKey:@"currentPhotographer"];
     NSLog(@"name is %@", p);
- NSManagedObjectContext *context = [delegate managedObjectContext];
+    NSManagedObjectContext *context = [delegate managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    
-    
-    
     NSEntityDescription *description = [NSEntityDescription entityForName:@"Photo" inManagedObjectContext:context];
-    
     [fetchRequest setEntity:description];
 //    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(timestamp = %@)", @"yes"];
 //    [fetchRequest setPredicate:predicate];
@@ -71,7 +68,7 @@ NSUserDefaults *userDefaults;
         if (iref)
         {
             UIImage *largeimage = [UIImage imageWithCGImage:iref];
-            NSData *imageData =  UIImagePNGRepresentation(largeimage);
+//            NSData *imageData =  UIImagePNGRepresentation(largeimage);
             NSString *urlString = [myasset valueForProperty:ALAssetPropertyAssetURL];
             NSLog(@"url for image is: %@ . ended",urlString);
             NSString *fakestring = [[NSString alloc] initWithFormat:@" %@ meep", urlString];
@@ -87,11 +84,8 @@ NSUserDefaults *userDefaults;
         NSLog(@"Can't get image - %@",[myerror localizedDescription]);
     };
     
-
-    
     for(int i = 0; i <[self.tableData count]; i++ ){
         Photo *photo =[self.tableData objectAtIndex:i];
-        NSString *urlString = photo.url;
         timestamp = photo.timestamp;
         
         ALAssetsLibrary* assetslibrary = [[ALAssetsLibrary alloc] init];
@@ -143,14 +137,13 @@ NSUserDefaults *userDefaults;
     if ([[segue identifier] isEqualToString:@"Show Photo"])
     {
         if([segue.destinationViewController isKindOfClass:[ImageViewController class]]){
-            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-            PhotoViewCell *cell =  (PhotoViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+            NSIndexPath *indexPath = [self.table indexPathForSelectedRow];
+            PhotoViewCell *cell =  (PhotoViewCell *)[self.table cellForRowAtIndexPath:indexPath];
             Photo *photo = [self.tableData objectAtIndex:indexPath.row];
-            ImageViewController *cvc = (ImageViewController *)[segue destinationViewController];
-            cvc.timestamp = cell.timestampLabel.text;
+            ImageViewController *ivc = (ImageViewController *)[segue destinationViewController];
+            ivc.timestamp = cell.timestampLabel.text;
             UIImage *image = [cache objectForKey:photo.url];
             NSString *fakestring = [[NSString alloc] initWithFormat:@" %@ meep", photo.url];
-
             NSString *string  = [cache objectForKey:fakestring];
 
             if(image!=nil) {
@@ -163,14 +156,13 @@ NSUserDefaults *userDefaults;
                 NSLog(@"both are nil");
                 
             }
-            cvc.url = cell.usernameLabel.text;
-            cvc.photo = photo;
+            ivc.url = cell.usernameLabel.text;
+            ivc.photo = photo;
         }
     }else if ([[segue identifier] isEqualToString:@"SwipeToCamera"])
     {
         if([segue.destinationViewController isKindOfClass:[CameraViewController class]]){
             CameraViewController *cvc = (CameraViewController *)[segue destinationViewController];
-
         }
     }
 
