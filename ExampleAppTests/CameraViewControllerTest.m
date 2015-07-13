@@ -66,10 +66,12 @@ CameraViewController *cameraVC;
     XCTAssertFalse(cameraVC.takePictureButton.isHidden);
 }
 
-- (void)testPreviewIsGOneAfterPictureTaken{
-    XCTAssertFalse(cameraVC.takePictureButton.isHidden);
+- (void)testPreviewIsGoneAfterPictureTaken{
+    XCTAssertFalse(cameraVC.previewLayer.isHidden);
     [cameraVC takePhoto:[OCMArg any]];
-    XCTAssertFalse(cameraVC.takePictureButton.isHidden);
+    XCTAssertTrue(cameraVC.previewLayer == nil);
+    [cameraVC cancelPhoto:[OCMArg any]];
+    XCTAssertTrue(cameraVC.previewLayer != nil);
 }
 
 

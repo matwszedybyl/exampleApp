@@ -79,13 +79,13 @@
         <!--Image View Controller-->
         <scene sceneID="Hkg-y4-1vo">
             <objects>
-                <viewController id="96c-uG-2Nm" customClass="ImageViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImageViewController" id="96c-uG-2Nm" customClass="ImageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TA2-fG-Pb3"/>
                         <viewControllerLayoutGuide type="bottom" id="hf1-hS-4iq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="N90-RI-t6h">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="khs-zo-Uve">
@@ -118,6 +118,7 @@
                         <outlet property="PhotoView" destination="SMu-dx-Gk5" id="BgZ-HQ-SIe"/>
                         <outlet property="spinner" destination="khs-zo-Uve" id="BBi-x9-x3W"/>
                         <outlet property="timeAgoLabel" destination="JN3-Bp-rg5" id="xbR-zr-V2F"/>
+                        <outlet property="usernameLabel" destination="xRa-MZ-1BR" id="N4W-vi-CdO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fTx-W3-OkB" userLabel="First Responder" sceneMemberID="firstResponder"/>

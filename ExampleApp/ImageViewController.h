@@ -17,5 +17,7 @@
 @property (nonatomic, strong) Photo *photo;
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, weak) IBOutlet UIImageView *photoView;
+@property (weak, nonatomic) IBOutlet UILabel *timeAgoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
 @end

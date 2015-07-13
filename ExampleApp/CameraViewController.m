@@ -123,7 +123,7 @@ BOOL *pictureTaken;
             NSLog(@"Outside block =  %@", url);
         }
     }];
-    pictureTaken = TRUE;
+    pictureTaken = true;
     [self.cancelPicButton setHidden:FALSE];
     [self.takePictureButton setHidden:TRUE];
 

@@ -20,6 +20,7 @@
 		3B10AF521B3997C3004B1AF8 /* ExampleAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B10AF511B3997C3004B1AF8 /* ExampleAppTests.m */; };
 		3B10AF5D1B399943004B1AF8 /* JumpInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B10AF5C1B399943004B1AF8 /* JumpInViewController.m */; };
 		3B10AF601B39AFBF004B1AF8 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B10AF5F1B39AFBF004B1AF8 /* CameraViewController.m */; };
+		3B1651BF1B5052B1003B1D5D /* ImageViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1651BE1B5052B1003B1D5D /* ImageViewControllerTest.m */; };
 		3B860DAE1B4EBA4E00D84436 /* CameraViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B860DAD1B4EBA4E00D84436 /* CameraViewControllerTest.m */; };
 		3BC3AF7B1B4AD23A004F97D1 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC3AF7A1B4AD23A004F97D1 /* SettingsViewController.m */; };
 		3BC3AF7F1B4B05BC004F97D1 /* LeftSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC3AF7E1B4B05BC004F97D1 /* LeftSegue.m */; };
@@ -68,6 +69,7 @@
 		3B10AF5C1B399943004B1AF8 /* JumpInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JumpInViewController.m; sourceTree = "<group>"; };
 		3B10AF5E1B39AFBF004B1AF8 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
 		3B10AF5F1B39AFBF004B1AF8 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		3B1651BE1B5052B1003B1D5D /* ImageViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewControllerTest.m; sourceTree = "<group>"; };
 		3B860DAD1B4EBA4E00D84436 /* CameraViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewControllerTest.m; sourceTree = "<group>"; };
 		3BC3AF791B4AD23A004F97D1 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		3BC3AF7A1B4AD23A004F97D1 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				3BCB090F1B45CB28007E6C7E /* LoginViewControllerTest.m */,
 				3BC5FFB51B4DB49F000ACE3D /* TableListViewControllerTest.m */,
 				3B860DAD1B4EBA4E00D84436 /* CameraViewControllerTest.m */,
+				3B1651BE1B5052B1003B1D5D /* ImageViewControllerTest.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				3BCB09101B45CB28007E6C7E /* LoginViewControllerTest.m in Sources */,
 				3B860DAE1B4EBA4E00D84436 /* CameraViewControllerTest.m in Sources */,
 				3B10AF521B3997C3004B1AF8 /* ExampleAppTests.m in Sources */,
+				3B1651BF1B5052B1003B1D5D /* ImageViewControllerTest.m in Sources */,
 				3BC5FFB61B4DB49F000ACE3D /* TableListViewControllerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
